@@ -35,9 +35,7 @@ function evaluate_key_item() {
 
 function read_meta_data() {
   local key_item="$1"
-  echo "$key_item"
   local value
-  echo "$value"
   local meta_data_key
   local meta_data_key_alias
   local mapped_key
@@ -49,6 +47,9 @@ function read_meta_data() {
   mapped_key=${meta_data_key_alias:-$meta_data_key}
 
   value=$(buildkite-agent meta-data get "$meta_data_key")
+
+  echo "key-item=${key_item}"
+  echo "value=${value}"
 
   if [[ -n "$value" ]]; then
     echo "${mapped_key}=(${#value} chars)" >&2;
