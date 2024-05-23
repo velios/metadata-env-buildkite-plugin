@@ -6,7 +6,7 @@ main() {
   echo "Reading meta-data ..."
   env_list=$(plugin_read_list | evaluate_key_item)
 
-  echo "Exporting ${#env_list} bytes of env"
+  echo "Exporting ${env_list} bytes of env"
   set -a
   eval "$env_list"
   set +a
@@ -35,7 +35,9 @@ function evaluate_key_item() {
 
 function read_meta_data() {
   local key_item="$1"
+  echo "$key_item"
   local value
+  echo "$value"
   local meta_data_key
   local meta_data_key_alias
   local mapped_key
